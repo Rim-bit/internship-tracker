@@ -1,4 +1,26 @@
-body {
+#title {
     margin: 0;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Times New Roman', serif;
+}
+
+#tracker-table {
+    margin: 0;
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+
+#tracker-table th,
+#tracker-table td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+#tracker-table thead {
+    border-bottom: 2px solid black;
+}
+
+#tracker-table th {
+    border-left: 2px solid black;
 }
