@@ -1,22 +1,16 @@
-from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, render_template, request, redirect
 from config import Config
+from app.models import db
 
-
-db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
+
     db.init_app(app)
 
-    # Home page
-    @app.route('/')
-    def index():
-        return render_template('index.html')
-
-    @app.route('/about')
-    def about():
-        return "About page!"
-
+    # Register the routes blueprint after the app is created to avoid circular import issues
+    from app.routes import main_bp
+    app.register_blueprint(main_bp)
+    
     return app

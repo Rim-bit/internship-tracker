@@ -1,5 +1,4 @@
-from app import db
-from datetime import datetime, UTC
+from app.extensions import db
 
 class Application(db.Model):
     # primary_key means each row gets unique identifier
