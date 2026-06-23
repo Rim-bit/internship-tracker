@@ -9,11 +9,29 @@
     <h1>Internship Tracker</h1>
 </div>
 
+
 <div>
-    <form action="/" method="POST">
-        <input type="text" name="company" id="company" placeholder="Company">
-        <input type="submit" value="Add">
-    </form>
+    <table id="add-table">
+        <thead>
+            <tr>
+                <form action="/" method="POST">
+                    <input type="text" name="company" id="company" placeholder="Add Company">
+                    <input type="text" name="role" id="role" placeholder="Add Role">
+                    <input type="text" name="status" id="status" placeholder="Add Status">
+                    <input type="text" name="location" id="location" placeholder="Location">
+                    <input type="text" name="applied_date" id="applied_date" placeholder="Applied Date">
+                    <input type="text" name="deadline" id="deadline" placeholder="Deadline">
+                    <input type="text" name="link" id="link" placeholder="Link">
+
+                    <button type="submit">
+                        ➕ Add
+                    </button>
+                </form>
+            </tr>
+        </thead>
+    </table>
+
+
 </div>
 
 <div class="table-container">
@@ -34,31 +52,18 @@
         </thead>
 
         <tbody>
-            <tr>
-                <td>a</td>
-                <td>a</td>
-                <td>a</td>
-                <td>a</td>
-                <td>a</td>
-                <td>a</td>
-                <td>a</td>
-                <td>a</td>
-                <td>
-                    <a href="">Add</a>
-                    <a href="">Delete</a>
-                </td>
-
-            </tr>
-                        <tr>
-                <td>a</td>
-                <td>a</td>
-                <td>a</td>
-                <td>a</td>
-                <td>a</td>
-                <td>a</td>
-                <td>a</td>
-                <td>a</td>
-            </tr>
+            {% for info in internship_info %}
+                <tr>
+                    <td>{{ info.id }}</td>
+                    <td>{{ info.company }}</td>
+                    <td>{{ info.role }}</td>
+                    <td>{{ info.status }}</td>
+                    <td>{{ info.location }}</td>
+                    <td>{{ info.applied_date }}</td>
+                    <td>{{ info.deadline }}</td>
+                    <td>{{ info.link }}</td>
+                </tr>
+            {% endfor %}
         </tbody>
 
     </table>
