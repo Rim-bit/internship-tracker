@@ -24,3 +24,7 @@
 #tracker-table th {
     border-left: 2px solid black;
 }
+
+.input-error::placeholder {
+    color: red;
+}
