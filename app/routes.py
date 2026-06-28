@@ -45,7 +45,7 @@ def index():
 
 @main_bp.route('/delete/<int:application_id>', methods=['POST'])
 def delete_row(application_id):
-    application = Application.query.get(application_id)
+    application = Application.query.get_or_404(application_id)
     try:
         db.session.delete(application)
         db.session.commit()
