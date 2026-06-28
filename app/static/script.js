@@ -35,3 +35,8 @@ companyName.addEventListener("input", function() {
     companyName.placeholder = "Company";
     companyName.classList.remove("input-error");
 });
+
+status.addEventListener("input", function() {
+    status.placeholder = "Status";
+    status.classList.remove("input-error");
+})
