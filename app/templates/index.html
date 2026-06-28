@@ -38,7 +38,6 @@
     <table id="tracker-table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Company</th>
                 <th>Role</th>
                 <th>Status</th>
@@ -54,7 +53,6 @@
         <tbody>
             {% for info in internship_info %}
                 <tr>
-                    <td>{{ info.id }}</td>
                     <td>{{ info.company }}</td>
                     <td>{{ info.role }}</td>
                     <td>{{ info.status }}</td>
@@ -62,6 +60,11 @@
                     <td>{{ info.applied_date }}</td>
                     <td>{{ info.deadline }}</td>
                     <td>{{ info.link }}</td>
+                    <td>
+                        <form action="{{ url_for('main.delete_row', application_id=info.id) }}" method='POST'>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

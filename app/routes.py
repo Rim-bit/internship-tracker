@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Flask, Blueprint, render_template, request, redirect, url_for
 from app.models import Application
 from app.extensions import db
 
@@ -8,6 +8,7 @@ main_bp = Blueprint("main", __name__)
 # Home page
 @main_bp.route('/', methods=['POST', 'GET'])
 def index():
+    # Save info to database if valid
     if request.method == 'POST':
         company = request.form.get('company', '').strip()
         role = request.form.get('role', '').strip()
@@ -36,13 +37,23 @@ def index():
             return redirect(url_for("main.index"))
         except:
             db.session.rollback()
-            return "There was an issue adding company name"
+            return redirect(url_for("main.index"))
     else:
         internship_info = Application.query.order_by(Application.id).all()
         return render_template('index.html', internship_info=internship_info)
 
-@main_bp.route('/about')
-def about():
-    return "About page!"
+
+@main_bp.route('/delete/<int:application_id>', methods=['POST'])
+def delete_row(application_id):
+    application = Application.query.get(application_id)
+    try:
+        db.session.delete(application)
+        db.session.commit()
+        return redirect(url_for("main.index"))
+
+    except:
+        db.session.rollback()
+        return redirect(url_for("main.index"))
+
 
 
