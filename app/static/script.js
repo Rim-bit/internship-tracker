@@ -11,13 +11,13 @@ addForm.addEventListener("submit", function(event) {
 
         if (companyMissing) {
             companyName.value = "";
-            companyName.placeholder = "Required*";
+            companyName.placeholder = "Company Required*";
             companyName.classList.add("input-error");
         }
         
         if (statusMissing) {
             status.value = "";
-            status.placeholder = "Required*";
+            status.placeholder = "Status Required*";
             status.classList.add("input-error");
         }
 
